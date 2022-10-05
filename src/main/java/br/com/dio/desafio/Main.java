@@ -1,6 +1,8 @@
 package br.com.dio.desafio;
 
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
@@ -23,8 +25,32 @@ public class Main {
         mentoria.setDescricao("mentoria de spring framework");
         mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Dev");
+        bootcamp.setDescricao("Descrição");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devPamela = new Dev();
+        devPamela.setNome("Pamela");
+        devPamela.inscreverBootcamp(bootcamp);
+        System.out.println("\nConteúdos inscritos Pamela: \n" + devPamela.getConteudosInscritos());
+
+        devPamela.progredir();
+        System.out.println("\nConteúdos concluídos Pamela: \n" + devPamela.getConteudosConcluidos());
+        System.out.println("\nXP: " + devPamela.calcularTotalXp());
+
+        Dev devAlef = new Dev();
+        devAlef.setNome("Alef");
+        devAlef.inscreverBootcamp(bootcamp);
+        System.out.println("\nConteúdos inscritos Alef: \n" + devAlef.getConteudosInscritos());
+
+        devAlef.progredir();
+        devAlef.progredir();
+        devAlef.progredir();
+        System.out.println("\nConteúdos concluídos Alef: \n" + devAlef.getConteudosConcluidos());
+        System.out.println("\nXP: " + devAlef.calcularTotalXp());
+
     }
 }
